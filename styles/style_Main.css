@@ -1,0 +1,363 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif, Verdana, Arial;
+	color: #292929;
+	font-size: 14px;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body{
+	background-color: #e8e8e8 ;
+	position: relative;
+	padding-bottom:30px;	
+	min-height: 100%;
+}
+
+/* ADMIN START */
+
+.Delete-Container{
+	text-align:right;
+}
+
+.Cross{
+	max-width:25px;
+	height: auto;
+	cursor:pointer;
+	margin-right:13px;
+}
+
+/* ADMIN END */
+
+/* HEADER */
+
+.Header-Wrapper{
+	background-color: #1D8A78;
+	
+}
+
+header{
+	max-width: 995px;
+	margin: 0 auto;
+	width:100%;
+	background-color: #1D8A78;
+}
+
+header>*{
+	display:inline-block;
+	vertical-align: top;
+}
+
+.Logo{
+	height: 100px;
+	width: 19%;
+	background-color: teal;
+	border: 1px solid red;
+	padding:0px
+}
+
+.Menu-SupUser{
+	width: 79%;
+	text-align:right;
+	list-style:none;
+	padding-bottom: 15px;
+}
+
+.Menu-SupUser a{
+	text-decoration:none;
+	font-size: 21px;
+	text-transform: uppercase;
+	color: white;
+	width:100px;
+	border:1px solid #176E60;
+	background-color: #176E60;
+	padding:5px;
+	cursor: pointer;
+	border-radius: 5px;
+	-webkit-box-shadow: 10px 7px 63px -13px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 7px 63px -13px rgba(0,0,0,0.75);
+	box-shadow: 10px 7px 63px -13px rgba(0,0,0,0.75);
+}
+
+.Menu-SupUser a:hover{
+	color: #D1DCE7;
+}
+
+.Menu-SupUser li:nth-child(1), .Menu-SupUser li:nth-child(2){
+	margin-right:60px;
+}
+
+
+.Menu-SupUser li{
+	display:inline-block;
+}
+
+.Delete-Container{
+	display:none;
+}
+
+.Add-User{
+	width:79%;
+	vertical-align: top;
+	text-align:right;
+	height:30px;
+	
+}
+
+.Add-User img{
+	width:35px;
+	height: auto;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  content: " ";
+  height: 0;
+  font-size: 0;
+  clear: both
+}
+
+/* HEADER-END */
+
+/* MAIN BODY */
+
+.Content-Wrapper{
+	width: 995px;
+	margin: 0 auto;
+	text-align: center;
+	min-height:100%;
+	height:auto;
+}
+
+/* MAIN BODY-END */
+
+/* TOPIC LIST BLOCK START */
+.Topics-List-Block{
+	text-align: left;
+}
+
+.Topic-Container{
+	margin-top: 30px;
+	border-bottom: 1px solid black;
+	padding-bottom: 8px;
+}
+
+.Topic{
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.Author{
+	text-align: left;
+}
+
+.Is-Taken{
+	text-align: left;
+}
+
+.static{
+	float: left;
+	width:50%;
+	display:inline-block;
+}
+
+.Enter-Topic{
+	width:100%;
+	margin-top:5px;
+	text-align:right;
+	margin-bottom:10px;
+}
+
+.Enter-Topic>a{
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 15px;
+	padding-right:15px;
+}
+
+.Enter-Topic>a:hover{
+	color:#808080;
+}
+
+.Show-All-Topic{
+	margin-top:10px;
+	margin-right:5px;
+	margin-bottom:30px;	
+	padding-bottom:70px;
+	text-align:right;
+}
+
+.Arrow{
+	max-width:40px;
+	height: auto;
+	cursor:pointer;
+}
+
+.Show-Hide-Block{
+	display: none;
+}
+/* TOPIC LIST BLOCK END */
+
+/* USERS LIST START */
+
+.User-Block{
+	margin-top:50px;
+	width:100%;
+	height:80px;
+	border-bottom:1px solid black;
+	margin-bottom:25px;
+	padding-bottom: 40px;
+}
+
+.User-Data>* {
+	display: inline-block;
+}
+
+.User-Name{
+	height:60px;
+	text-align:left;
+	width:20%;
+	vertical-align: top;
+	font-size:17px;
+}
+
+.User-Topic{
+	height:90%;
+	width: 79%;
+	font-size: 16px;
+}
+
+.Topic-Author{
+	width:100%;
+	text-align: right;
+}
+
+.Show-Hide-User{
+	display: none;
+}
+/* USERS LIST END */
+
+/* REGISTER FORM START */
+
+.Content-Wrapper form, input {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+label,input{
+	display: inline-block;
+	vertical-align: baseline;	
+}
+
+.Form-Container{
+	width:50%;
+	margin:50px auto;
+	height:450px;
+	border-radius:40px;
+	text-align:center;
+}
+
+.Read-Block{
+	margin: 30px 0;
+}
+
+.Read-Block input{
+	padding: 10px;
+	border: solid 5px #c9c9c9;
+	transition: border 0.3s;
+}
+
+.Read-Block:nth-child(2){
+	margin-right:34px;
+}
+
+.Read-Block:nth-child(3){
+	margin-right:-13px;
+}
+
+.Read-Block:nth-child(4){
+	margin-right:6px;
+}
+
+.Read-Block input:focus,
+.Read-Block input.focus {
+	border: solid 5px #969696;
+}
+
+.Control{
+	margin:40px 0;
+}
+
+.Control .Reg-Btn{
+        background: #ECECEC;
+        border-radius: 16px;
+        padding: 10px 20px;
+        display: block;	
+        font-weight: bold;
+        color:#7f7f7f;
+        text-decoration: none;
+        text-shadow:0px 1px 0px #fff;
+        border:1px solid #a7a7a7;
+        width: 145px;
+        margin:0px auto;
+        margin-top:50px;
+        box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+        -webkit-transition:box-shadow 0.5s;
+    }
+    .Control button i{
+        float: right;
+        margin-top: 2px;
+    }
+    .Control button:hover{
+        box-shadow: 0px 2px 1px white inset, 0px -2px 20px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+    }
+    .Control button:active{
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5) inset, 0px -2px 20px white, 0px 1px 5px rgba(0, 0, 0, 0.1), 0px 2px 10px rgba(0, 0, 0, 0.1);
+        background:-webkit-linear-gradient(top, #d1d1d1 0%,#ECECEC 100%);
+    }
+
+	/* REGISTER FORM END */
+
+/* FOOTER */
+
+.Footer-Wrapper{
+	width:100%;
+	background-color:#1D8A78;
+	height: 80px;
+	position:absolute;
+	bottom:0;
+	left:0;	
+}
+
+footer{
+	padding-top:50px;
+	text-align: center;
+	background-color:#1D8A78;
+}
+
+/* FOOTER-END */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

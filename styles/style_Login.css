@@ -1,0 +1,140 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif, Verdana, Arial;
+	background-color: #e8e8e8 ;
+	color: #292929;
+	font-size: 14px;
+}
+
+body{
+	height:100%;
+}
+/* --------------BUTTON #1D8A78
+/* HEADER */
+
+.Header-Wrapper{
+	background-color: #1D8A78;
+	
+}
+
+header{
+	max-width: 995px;
+	margin: 0 auto;
+	width:100%;
+	background-color: #1D8A78;
+}
+
+header>*{
+	display:inline-block;
+}
+
+.Logo{
+	height: 100px;
+	width: 19%;
+	background-color: teal;
+	border: 1px solid red;
+	padding:0px
+}
+
+/* HEADER-END */
+
+/* MAIN BODY */
+
+.Content-Wrapper{
+	width: 995px;
+	margin: 0 auto;
+	text-align: center;
+	min-height:100%;
+	height:auto;
+}
+
+.Data-Wrapper{
+	margin:0 auto;
+	min-height:100%;
+	position:relative;
+}
+.Data-Wrapper>*{
+	text-align: center;
+}
+
+.Data-Wrapper .User-Wrapper,.Pass-Wrapper{
+	margin-top:150px;
+}
+
+.Data-Wrapper label{
+	text-align:left !important;
+}
+
+.User-Wrapper{
+	width:200px;
+	display:inline-block;
+	margin:0 auto;
+}
+
+.User-Wrapper>*{
+	display:block;
+}
+
+.Pass-Wrapper{
+	width:200px;
+	display:inline-block;
+	
+}
+
+.Pass-Wrapper>*{
+	display:block;
+}
+
+.Enter-Button{
+	margin-top:50px;
+	text-align: center;
+	display:block;
+	width:100%;
+}
+
+.Enter-Button>*{
+	width:150px;
+	height:50px;
+	padding:3px;
+}
+
+/* MAIN BODY-END */
+
+/* FOOTER */
+
+.Footer-Wrapper{
+	width:100%;
+	background-color:#1D8A78;
+	height: 80px;
+	position:absolute;
+	bottom:0;
+	left:0;	
+}
+
+footer{
+	padding-top:50px;
+	text-align: center;
+	background-color:#1D8A78;
+}
+
+/* FOOTER-END */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

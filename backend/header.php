@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 <link rel="stylesheet" href="../styles/style_Login.css">
+<link rel="stylesheet" href="styles/style_Login.css">
 <title>Praca dyplomowa</title>
 
 </head>

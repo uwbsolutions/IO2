@@ -15,7 +15,7 @@ require_once("headeradmin.php");
         <div class="Read-Block">
 
           <label for="name">Nr albumu</label>
-          <input type="text" id="nr_albumu" name="nr_albumu" placeholder="" class="Input-Field">
+          <input type="text" id="nr_albumu" name="nr_akbumu" placeholder="" class="Input-Field">
 
         </div>
 

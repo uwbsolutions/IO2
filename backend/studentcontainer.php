@@ -20,7 +20,7 @@ if ($mysqli->connect_errno) {
     exit();
 }
 
-$query = "SELECT * FROM praca_dyplomowa where status<>'Zarejestrowana'";
+$query = "SELECT * FROM praca_dyplomowa  join wykladowca on wykladowca.Id_Wykladowcy=praca_dyplomowa.Id_Promotora where praca_dyplomowa.status<>'Zarejestrowana'";
 
 if ($result = $mysqli->query($query)) {
 
@@ -54,7 +54,7 @@ if ($result = $mysqli->query($query)) {
 
              </div>
              
-         </div>\n", $row["Temat"], $row["Opis"], $row["Opis"]);
+         </div>\n", $row["Temat"], $row["Id_Promotora"], $row["Opis"]);
     }
 
     /* free result set */

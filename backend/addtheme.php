@@ -1,5 +1,6 @@
 <?php
 require_once("header.php");
+session_start();
 ?>
 
 
@@ -39,6 +40,7 @@ require_once("header.php");
       </div>
      <!-- REGISTER FORM END -->
 <?php
+
 $conn = mysqli_connect("localhost", "root", "", "ioii");
   if (mysqli_connect_errno()) {
     echo 'Nie udało się połączyć z bazą danych: ' . mysqli_connect_error();
@@ -60,8 +62,9 @@ if (isset($_POST['Temat'])) {
     $Temat = $_POST['Temat'];
     $Opis = $_POST['Opis'];
     $Status= "Zarejestrowana";
+    $ID = $_SESSION['IDw'];
 
-    $sql = "INSERT INTO praca_dyplomowa(Temat, Opis, Status, Id_Promotora) VALUES ('$Temat','$Opis','$Status') ";
+    $sql = "INSERT INTO praca_dyplomowa(Temat, Opis, Status, Id_Promotora) VALUES ('$Temat','$Opis','$Status','$ID') ";
 
     $res =mysqli_query($conn, $sql);
 

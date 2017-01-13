@@ -1,5 +1,7 @@
  <!-- MAIN CONTENT WRAPPER START -->
-
+  <script src="../js/jquery-3.1.1.js"></script>
+  <script src="../js/show_more_topics.js"></script>
+  <script src="../js/_show_hide_delete.js"></script>
   <div class="Content-Wrapper">
   
      <!-- TOPIC LIST START -->
@@ -18,7 +20,7 @@ if ($mysqli->connect_errno) {
     exit();
 }
 
-$query = "SELECT * FROM praca_dyplomowa";
+$query = "SELECT * FROM praca_dyplomowa where status<>'Zarejestrowana'";
 
 if ($result = $mysqli->query($query)) {
 
@@ -26,10 +28,6 @@ if ($result = $mysqli->query($query)) {
     while ($row = $result->fetch_assoc()) {
         printf ( "<div class=\"Topic-Container\">
              
-          <div class=\"Delete-Container\">
-                <img class=\"Cross\" src=\"../images/cross.png\" />
-          </div>
-
              <div class=\"Topic\">
              %s
                
@@ -37,14 +35,14 @@ if ($result = $mysqli->query($query)) {
                
              <!-- AUTHOR OF TOPIC -->
              <div class=\"Author\">
-                <p class=\"static\">Opis:</p> 
+                <p class=\"static\">Autor:</p> 
                 %s
              </div>
 
              <!-- IS THE TOPIC TAKEN? IF SO - BY WHO? -->
              <div class=\"Is-Taken\">
-                <p class=\"static\">Student:</p>
-                Jarek Zubrz
+                <p class=\"static\">Opis:</p>
+                %s
              </div>
              
              <!-- ENTER INSIDE TOPIC DESCRIPTION -->
@@ -56,7 +54,7 @@ if ($result = $mysqli->query($query)) {
 
              </div>
              
-         </div>\n", $row["Temat"], $row["Opis"]);
+         </div>\n", $row["Temat"], $row["Opis"], $row["Opis"]);
     }
 
     /* free result set */

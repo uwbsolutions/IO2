@@ -1,9 +1,15 @@
 <?php
-include('session.php');
-require_once("headeradmin.php");
-require_once("admincontainer.html");
-require_once("footer.php");
 
+
+include('session.php');
+if($user_check[0]=='s'){
+
+require_once("header.php");
+require_once("studentcontainer.php");
+require_once("footer.php");
+}
+else 
+	echo "Nie masz dostepu do tej strony ". "<a href='../index.php'>Homepage</a>";
 
 
 ?>

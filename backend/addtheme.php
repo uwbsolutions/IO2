@@ -61,7 +61,7 @@ if (isset($_POST['Temat'])) {
     $Opis = $_POST['Opis'];
     $Status= "Zarejestrowana";
 
-    $sql = "INSERT INTO praca_dyplomowa(Temat, Opis, Status) VALUES ('$Temat','$Opis','$Status') ";
+    $sql = "INSERT INTO praca_dyplomowa(Temat, Opis, Status, Id_Promotora) VALUES ('$Temat','$Opis','$Status') ";
 
     $res =mysqli_query($conn, $sql);
 
@@ -106,9 +106,6 @@ echo "Dodano";
   <!-- FOOTER END -->
   
   <!-- SCRIPTS START -->
-  <script src="js/jquery-3.1.1.js"></script>
-  <script src="js/show_more_topics.js"></script>
-  <script src="js/_show_hide_delete.js"></script>
   <!-- SCRIPTS END -->
 </body>
 </html>

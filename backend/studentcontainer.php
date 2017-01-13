@@ -1,8 +1,5 @@
  <!-- MAIN CONTENT WRAPPER START -->
-  <script src="../js/jquery-3.1.1.js"></script>
-  <script src="../js/show_more_topics.js"></script>
-  <script src="../js/_show_hide_delete.js"></script>
-  <div class="Content-Wrapper">
+   <div class="Content-Wrapper">
   
      <!-- TOPIC LIST START -->
      <div class="Topics-List-Block">
@@ -20,10 +17,22 @@ if ($mysqli->connect_errno) {
     exit();
 }
 
-$query = "SELECT * FROM praca_dyplomowa  join wykladowca on wykladowca.Id_Wykladowcy=praca_dyplomowa.Id_Promotora where praca_dyplomowa.status<>'Zarejestrowana'";
+$ID = $_SESSION['IDw'];
+$querycheck = "SELECT * FROM student where Nr_Albumu = '$ID'";
+
+if ($resultt = $mysqli->query($querycheck)) {
+$rowcheck = $resultt->fetch_assoc();
+$checking=$rowcheck['Id_Pracy'];
+
+if($checking == NULL)
+  $query = "SELECT * FROM praca_dyplomowa  join wykladowca on wykladowca.Id_Wykladowcy=praca_dyplomowa.Id_Promotora where praca_dyplomowa.status='Zatwierdzona'";
+
+else
+  $query = "SELECT pd.Temat as Temat, pd.Id_Pracy,w.Nazwisko as Nazwisko,w.Imie as Imie, pd.Opis as Opis, s.Nr_Albumu, pd.Id_Promotora  FROM `praca_dyplomowa` pd join student s on s.Id_Pracy = pd.Id_Pracy join wykladowca w on w.Id_Wykladowcy=pd.Id_Promotora where s.Nr_Albumu = '$ID'";
+}
+
 
 if ($result = $mysqli->query($query)) {
-
     /* fetch associative array */
     while ($row = $result->fetch_assoc()) {
         printf ( "<div class=\"Topic-Container\">
@@ -36,7 +45,7 @@ if ($result = $mysqli->query($query)) {
              <!-- AUTHOR OF TOPIC -->
              <div class=\"Author\">
                 <p class=\"static\">Autor:</p> 
-                %s
+                %s %s
              </div>
 
              <!-- IS THE TOPIC TAKEN? IF SO - BY WHO? -->
@@ -54,7 +63,7 @@ if ($result = $mysqli->query($query)) {
 
              </div>
              
-         </div>\n", $row["Temat"], $row["Id_Promotora"], $row["Opis"]);
+         </div>\n", $row["Temat"], $row["Imie"], $row['Nazwisko'], $row["Opis"]);
     }
 
     /* free result set */

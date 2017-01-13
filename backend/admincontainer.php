@@ -17,8 +17,8 @@ if ($mysqli->connect_errno) {
     printf("Connect failed: %s\n", $mysqli->connect_error);
     exit();
 }
+$query = "SELECT * FROM praca_dyplomowa  join wykladowca on wykladowca.Id_Wykladowcy=praca_dyplomowa.Id_Promotora where praca_dyplomowa.status<>'Zarejestrowana'";
 
-$query = "SELECT * FROM praca_dyplomowa";
 
 if ($result = $mysqli->query($query)) {
 
@@ -31,20 +31,20 @@ if ($result = $mysqli->query($query)) {
           </div>
 
              <div class=\"Topic\">
-             %s
+             %s 
                
              </div>
                
              <!-- AUTHOR OF TOPIC -->
              <div class=\"Author\">
-                <p class=\"static\">Opis:</p> 
-                %s
+                <p class=\"static\">Autor:</p> 
+                %s %s
              </div>
 
              <!-- IS THE TOPIC TAKEN? IF SO - BY WHO? -->
              <div class=\"Is-Taken\">
-                <p class=\"static\">Student:</p>
-                Jarek Zubrz
+                <p class=\"static\">Opis:</p>
+                %s
              </div>
              
              <!-- ENTER INSIDE TOPIC DESCRIPTION -->
@@ -56,7 +56,7 @@ if ($result = $mysqli->query($query)) {
 
              </div>
              
-         </div>\n", $row["Temat"], $row["Opis"]);
+         </div>\n", $row["Temat"], $row["Imie"], $row['Nazwisko'], $row["Opis"]);
     }
 
     /* free result set */

@@ -38,11 +38,12 @@ $query = mysql_query("select * from student where Haslo='$password' AND Login='$
 
 
 
-if ($query) {
+if (mysql_num_rows($query) == 1) {
 
 $tab = mysql_fetch_array($query);
 
 $IDw=$tab[0];
+
 
 $_SESSION['login_user']=$username; // Initializing Session
 $_SESSION['IDw']=$IDw;

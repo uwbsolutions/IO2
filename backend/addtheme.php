@@ -26,32 +26,6 @@ require_once("header.php");
 
         </div>
 
-
-        <div class="Read-Block">
-
-          <label for="name">Imie studenta</label>
-          <input type="text" id="name" name="imie_stud" placeholder="" class="Input-Field">
-
-        </div>
-        <div class="Read-Block">
-          
-          <label for="surname">Nazwisko studenta</label>
-          <input type="text" id="surname" name="nazw_stud" placeholder="" class="Input-Field">
-
-        </div>
-        <div class="Read-Block">
-          
-          <label for="Login">Login studenta</label>
-          <input type="text" id="login" name="log_stud" placeholder="" class="Input-Field">
-
-        </div>
-        <div class="Read-Block">
-          
-          <label for="Haslo">Haslo studenta</label>
-          <input type="password" id="Haslo" name="hasl_stud" placeholder="" class="Input-Field">
-
-        </div>
-
         <!-- Button -->
         <div class="Control">
           <button type = "submit" class="Reg-Btn">Register<i class="icon-chevron-right">
@@ -62,6 +36,7 @@ require_once("header.php");
         </div>
 
       </form>
+      </div>
      <!-- REGISTER FORM END -->
 <?php
 $conn = mysqli_connect("localhost", "root", "", "ioii");
@@ -69,21 +44,24 @@ $conn = mysqli_connect("localhost", "root", "", "ioii");
     echo 'Nie udało się połączyć z bazą danych: ' . mysqli_connect_error();
     exit();
   } 
-if (isset($_POST['log_stud'])) {
+
+
+
+/*if(isset($_POST['Temat'])){
+    echo $_POST['Temat']." AAAA ". $_POST['Opis'];
+
+
+  }
+*/
+
+if (isset($_POST['Temat'])) {
 
   
-    $nr_albumu = $_POST['nr_albumu'];
-    $imie_stud = $_POST['imie_stud'];
+    $Temat = $_POST['Temat'];
+    $Opis = $_POST['Opis'];
+    $Status= "Zarejestrowana";
 
-    $nazw_stud = $_POST['nazw_stud'];
-
-    $log_stud = $_POST['log_stud'];
-
-    $hasl_stud = $_POST['hasl_stud'];
-
-
-
-    $sql = "INSERT INTO student(nr_albumu,imie,nazwisko,login,haslo) VALUES ('$nr_albumu','$imie_stud','$nazw_stud','$log_stud','$hasl_stud') ";
+    $sql = "INSERT INTO praca_dyplomowa(Temat, Opis, Status) VALUES ('$Temat','$Opis','$Status') ";
 
     $res =mysqli_query($conn, $sql);
 
@@ -91,7 +69,7 @@ if (isset($_POST['log_stud'])) {
 
     if ($res) {
 
-
+echo "Dodano";
     } 
 
     else {

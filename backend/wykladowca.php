@@ -1,7 +1,7 @@
 <?php
 include('session.php');
-require_once("headeradmin.php");
-require_once("admincontainer.html");
+require_once("header.php");
+require_once("wykladowcacontainer.php");
 require_once("footer.php");
 
 

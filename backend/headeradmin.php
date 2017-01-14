@@ -33,9 +33,11 @@
          <div class="Menu-SupUser clearfix">
             <ul>
               <li>  
-                  <a href="#">  Topics List  </a></li>
+                  <a href="admin.php">  Topics List  </a></li>
               <li>  
-                  <a href="#">  Students   </a></li>
+                  <a href="Editstudents.php">  Students   </a></li>
+              <li>  
+                  <a href="allteachers.php">  Teachers   </a></li>
               <li>  
                   <div class="edit"> <a> EDIT </a>  </div></li>
             </ul>

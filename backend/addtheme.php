@@ -16,14 +16,14 @@ session_start();
         <div class="Read-Block">
 
           <label for="Temat">Temat</label>
-          <textarea form="theme" name="Temat" cols="20" wrap="soft"></textarea> 
+          <textarea form="theme" name="Temat" cols="100" rows="10" wrap="soft"></textarea> 
 
         </div>
 
         <div class="Read-Block">
 
           <label for="Opis">Opis</label>
-          <textarea form="theme" name="Opis" cols="20" wrap="soft"></textarea> 
+          <textarea form="theme" name="Opis" cols="100" rows="10" wrap="soft"></textarea> 
 
         </div>
 

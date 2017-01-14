@@ -1,5 +1,3 @@
-
-
 <?php
 require_once("backend/header.php");
 require_once("backend/content.php");

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2017 at 10:41 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: 2017 m. Sau 14 d. 17:48
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Sukurta duomenų struktūra lentelei `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,7 +34,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Sukurta duomenų kopija lentelei `admin`
 --
 
 INSERT INTO `admin` (`Admin_Id`, `Imie`, `Login`, `Haslo`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `admin` (`Admin_Id`, `Imie`, `Login`, `Haslo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `obrona`
+-- Sukurta duomenų struktūra lentelei `obrona`
 --
 
 CREATE TABLE `obrona` (
@@ -57,7 +57,7 @@ CREATE TABLE `obrona` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `praca_dyplomowa`
+-- Sukurta duomenų struktūra lentelei `praca_dyplomowa`
 --
 
 CREATE TABLE `praca_dyplomowa` (
@@ -73,17 +73,32 @@ CREATE TABLE `praca_dyplomowa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `praca_dyplomowa`
+-- Sukurta duomenų kopija lentelei `praca_dyplomowa`
 --
 
 INSERT INTO `praca_dyplomowa` (`Id_Pracy`, `Temat`, `Opis`, `Status`, `Plik_Pracy`, `Id_RecenzjaP`, `Id_RecenzjaR`, `Id_Promotora`, `Id_Recenzenta`) VALUES
-(2, 'Temat1', 'sdlkfnaskldjfblajswebdf,sdnl,', 'do_sprawdzenia', NULL, NULL, NULL, NULL, NULL),
-(3, 'temat2', 's,dfalsdfmkasbfkjn', 'do_sprawdzenia', NULL, NULL, NULL, NULL, NULL);
+(6, 'coooooooooooool', 'cooooooooooool', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL),
+(8, 'aaaaaaaa', 'aaaaaaaaaa', 'Zatwierdzona', NULL, NULL, NULL, 4, NULL),
+(9, 'aaa', 'sddf', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL),
+(10, 'uiii', 'uiiii', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL),
+(11, 'asdf', 'asdfa', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL),
+(12, 'asd', 'asdf', 'Zatwierdzona', NULL, NULL, NULL, 2, NULL),
+(13, 'asd', 'asdf', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL),
+(14, 'asd', 'asdf', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL),
+(15, 'a', 'a', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL),
+(16, 'asdf', 'asdf', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL),
+(17, 'asdf', 'asdf', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL),
+(18, 'asdf', 'asdf', 'Zatwierdzona', NULL, NULL, NULL, 2, NULL),
+(19, 'qwert', 'qwerttytt', 'Do_recenzji', 'wwww.wwww.wwww', NULL, NULL, 5, NULL),
+(20, 'asdf', 'asdfasdf', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL),
+(23, 'asdf', 'asdf', 'Zarejestrowana', NULL, NULL, NULL, 5, NULL),
+(25, 'qwer', 'qwerqwt', 'Zatwierdzona', NULL, NULL, NULL, 4, NULL),
+(26, 'qqqq', 'qqqq', 'Zarejestrowana', NULL, NULL, NULL, 2, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `recenzja`
+-- Sukurta duomenų struktūra lentelei `recenzja`
 --
 
 CREATE TABLE `recenzja` (
@@ -97,7 +112,7 @@ CREATE TABLE `recenzja` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student`
+-- Sukurta duomenų struktūra lentelei `student`
 --
 
 CREATE TABLE `student` (
@@ -110,18 +125,18 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `student`
+-- Sukurta duomenų kopija lentelei `student`
 --
 
 INSERT INTO `student` (`Nr_Albumu`, `Imie`, `Nazwisko`, `Login`, `Haslo`, `Id_Pracy`) VALUES
-(2, 'imie', 'nazw', 's123', 'haslo', NULL),
-(123, 'sodgn', 'JHSBD', 's3432', 'haslo', NULL),
+(2, 'imie', 'nazw', 's123', 'haslo', 19),
+(123, 'sodgn', 'JHSBD', 's3432', 'haslo', 25),
 (12344, 'asds', 'asds', 's1111', 's1111', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wykladowca`
+-- Sukurta duomenų struktūra lentelei `wykladowca`
 --
 
 CREATE TABLE `wykladowca` (
@@ -134,11 +149,11 @@ CREATE TABLE `wykladowca` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wykladowca`
+-- Sukurta duomenų kopija lentelei `wykladowca`
 --
 
 INSERT INTO `wykladowca` (`Id_Wykladowcy`, `Login`, `Haslo`, `Imie`, `Nazwisko`, `Tytul_Naukowy`) VALUES
-(1, 'wykl1', 'pass', 'wykl', 'aa', 'tytul'),
+(2, 'wykl1', 'pass', 'wykl', 'aa', 'tytul'),
 (4, 'wykl2', 'wykl2', 'Anna', 'Zalewska', 'Dr'),
 (5, 'w1111', 'pass', 'eliza', 'elizowska', 'Dr');
 
@@ -200,7 +215,7 @@ ALTER TABLE `obrona`
 -- AUTO_INCREMENT for table `praca_dyplomowa`
 --
 ALTER TABLE `praca_dyplomowa`
-  MODIFY `Id_Pracy` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_Pracy` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `recenzja`
 --

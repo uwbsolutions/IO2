@@ -57,12 +57,29 @@ if (isset($_GET['recenzjap']) && isset($_GET['id'])){
       $res = mysqli_query($mysqli, $sql);
       if ($res) {
       echo 'Rekord został dodany';
+      $sql = "SELECT * FROM `praca_dyplomowa` p join recenzja r on p.Id_pracy=r.Id_Pracy WHERE p.Id_Pracy='$idd'"; 
+      $res = mysqli_query($mysqli, $sql);
+      $num_rows = mysql_num_rows($res);
+      if($num_rows==2){
+      	$row = $result->fetch_assoc();
+ 		$oc1=$row["Ocena"];
+ 		$row = $result->fetch_assoc(); 
+ 		$oc2=$row["Ocena"];
+ 		if($oc1>2&&$oc2>2){
+ 			$sql = "UPDATE praca_dyplomowa SET status='Do_obrony' WHERE Id_Pracy='$idd'"; 
+      		$res = mysqli_query($mysqli, $sql);
+ 		}
+      	 
+      }
+
+      
       header("location: wykladowca.php");
     }
       else echo "Modyfikacja nie powiodła się: $sql<br>" .  mysqli_error($mysqli) . "<br><br>";   
     }
 
 }
+
 
 
 if (isset($_GET['recenzjar']) && isset($_GET['id'])){ 
@@ -101,14 +118,30 @@ if (isset($_GET['recenzjar']) && isset($_GET['id'])){
       $res = mysqli_query($mysqli, $sql);
       if ($res) {
       echo 'Rekord został dodany';
+      $sql = "SELECT * FROM `praca_dyplomowa` p join recenzja r on p.Id_pracy=r.Id_Pracy WHERE p.Id_Pracy='$idd'"; 
+      $res = mysqli_query($mysqli, $sql);
+      $num_rows = mysql_num_rows($res);
+      if($num_rows==2){
+      	$row = $result->fetch_assoc();
+ 		$oc1=$row["Ocena"];
+ 		$row = $result->fetch_assoc(); 
+ 		$oc2=$row["Ocena"];
+ 		if($oc1>2&&$oc2>2){
+ 			$sql = "UPDATE praca_dyplomowa SET status='Do_obrony' WHERE Id_Pracy='$idd'"; 
+      		$res = mysqli_query($mysqli, $sql);
+ 		}
+      	 
+      }
       
+
+
       header("location: wykladowca.php");
-    }
+ 		}
+    
       else echo "Modyfikacja nie powiodła się: $sql<br>" .  mysqli_error($mysqli) . "<br><br>";   
     }
 
 }
-
 
 
 
@@ -171,8 +204,7 @@ if ($result = $mysqli->query($query)) {
 }
 
 
-   $query = "SELECT * FROM praca_dyplomowa  join wykladowca on wykladowca.Id_Wykladowcy=praca_dyplomowa.Id_Recenzenta where praca_dyplomowa.status='Do_recenzji' and praca_dyplomowa.Id_Recenzenta='$id_wykl'";
-
+   $query = "SELECT * FROM praca_dyplomowa  join wykladowca on wykladowca.Id_Wykladowcy=praca_dyplomowa.Id_Recenzenta where praca_dyplomowa.status='Do_Recenzji' and praca_dyplomowa.Id_Recenzenta='$id_wykl'";
  
 if ($result = $mysqli->query($query)) {
 

@@ -17,7 +17,30 @@ if ($mysqli->connect_errno) {
     printf("Connect failed: %s\n", $mysqli->connect_error);
     exit();
 }
-$query = "SELECT * FROM praca_dyplomowa  join wykladowca on wykladowca.Id_Wykladowcy=praca_dyplomowa.Id_Promotora where praca_dyplomowa.status='Zarejestrowana'";
+$query = "SELECT *,p.Imie as imiep,p.Nazwisko as nazwiskop, r.Imie as imier, r.Nazwisko as nazwiskor FROM praca_dyplomowa  join wykladowca p on p.Id_Wykladowcy=praca_dyplomowa.Id_Promotora join wykladowca r on r.Id_Wykladowcy=praca_dyplomowa.Id_Recenzenta where praca_dyplomowa.status='Zarejestrowana'";
+
+if(isset($_GET['podtwierdz'])&&isset($_GET['id'])){
+  $idprc=$_GET['id'];
+  $sql = "UPDATE praca_dyplomowa SET Status = 'Zatwierdzona' WHERE Id_Pracy ='$idprc'";
+      $res = mysqli_query($mysqli, $sql);
+      if ($res) {
+      echo 'Rekord został zmodyfikowany';
+      header("location: admin.php");
+    }
+      else echo "Modyfikacja nie powiodła się: $sql<br>" .  mysqli_error($mysqli) . "<br><br>";   
+    }
+
+    if(isset($_GET['usun'])&&isset($_GET['id'])){
+  $idprc=$_GET['id'];
+  $sql = "DELETE FROM praca_dyplomowa WHERE Id_Pracy ='$idprc'";
+      $res = mysqli_query($mysqli, $sql);
+      if ($res) {
+      echo 'Deleted';
+      header("location: admin.php");
+    }
+      else echo "Usuwanie nie powiodło się: $sql<br>" .  mysqli_error($mysqli) . "<br><br>";   
+    }
+
 
 
 if ($result = $mysqli->query($query)) {
@@ -29,7 +52,7 @@ if ($result = $mysqli->query($query)) {
           <div class=\"Topic-Container\">
            
           <div class=\"Delete-Container\">
-                <a href=\"#\"><img class=\"Cross\" src=\"../images/cross.png\" /></a>
+                <a href=\"admin.php?usun=1&amp;id=" . $row["Id_Pracy"] . "\"><img class=\"Cross\" src=\"../images/cross.png\" /></a>
           </div>
 
              <div class=\"Topic\">
@@ -39,7 +62,11 @@ if ($result = $mysqli->query($query)) {
                
              <!-- AUTHOR OF TOPIC -->
              <div class=\"Author\">
-                <p class=\"static\">Autor:</p> 
+                <p class=\"static\">Promotor:</p> 
+                %s %s
+             </div>
+             <div class=\"Author\">
+                <p class=\"static\">Recenzent:</p> 
                 %s %s
              </div>
 
@@ -57,12 +84,12 @@ if ($result = $mysqli->query($query)) {
              <!-- ENTER INSIDE TOPIC DESCRIPTION -->
              <div class=\"Enter-Topic\">
                
-               <a href=\"#\">  
-                   Wiecej  
+               <a href=\"admin.php?podtwierdz=1&amp;id=" . $row["Id_Pracy"] . "\">  
+                   Zatwierdz temat  
                </a>
               
              </div>
-         </div>\n", $row["Temat"], $row["Imie"], $row['Nazwisko'], $row["Opis"], $row["Status"]);
+         </div>\n",  $row["Temat"], $row["imiep"], $row['nazwiskop'], $row["imier"], $row['nazwiskor'], $row["Opis"], $row["Status"]);
     }
 
     /* free result set */
@@ -70,7 +97,7 @@ if ($result = $mysqli->query($query)) {
 }
 
 
-   $query = "SELECT * FROM praca_dyplomowa  join wykladowca on wykladowca.Id_Wykladowcy=praca_dyplomowa.Id_Promotora where praca_dyplomowa.status<>'Zarejestrowana'";
+   $query = "SELECT *,p.Imie as imiep,p.Nazwisko as nazwiskop, r.Imie as imier, r.Nazwisko as nazwiskor FROM praca_dyplomowa  join wykladowca p on p.Id_Wykladowcy=praca_dyplomowa.Id_Promotora join wykladowca r on r.Id_Wykladowcy=praca_dyplomowa.Id_Recenzenta where praca_dyplomowa.status<>'Zarejestrowana'";
 
 
 if ($result = $mysqli->query($query)) {
@@ -82,7 +109,7 @@ if ($result = $mysqli->query($query)) {
           <div class=\"Topic-Container\">
              
           <div class=\"Delete-Container\">
-               <a href=\"#\"><img class=\"Cross\" src=\"../images/cross.png\" /></a>
+               <a href=\"admin.php?usun=1&amp;id=" . $row["Id_Pracy"] . "\"><img class=\"Cross\" src=\"../images/cross.png\" /></a>
           </div>
 
              <div class=\"Topic\">
@@ -92,7 +119,11 @@ if ($result = $mysqli->query($query)) {
                
              <!-- AUTHOR OF TOPIC -->
              <div class=\"Author\">
-                <p class=\"static\">Autor:</p> 
+                <p class=\"static\">Promotor:</p> 
+                %s %s
+             </div>
+             <div class=\"Author\">
+                <p class=\"static\">Recenzent:</p> 
                 %s %s
              </div>
 
@@ -109,14 +140,9 @@ if ($result = $mysqli->query($query)) {
 
              
              <!-- ENTER INSIDE TOPIC DESCRIPTION -->
-             <div class=\"Enter-Topic\">
-               
-               <a href=\"#\">  
-                   Wiecej  
-               </a>
-              </div>
+             
              </div>
-         </div>\n", $row["Temat"], $row["Imie"], $row['Nazwisko'], $row["Opis"], $row["Status"]);
+         </div>\n", $row["Temat"], $row["imiep"], $row['nazwiskop'], $row["imier"], $row['nazwiskor'], $row["Opis"], $row["Status"]);
     }
 
     

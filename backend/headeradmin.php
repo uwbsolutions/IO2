@@ -25,7 +25,7 @@
 
          <div class="Add-User">
            
-            <a href=""> <img src="../images/add_icon.png" alt=""> </a>
+            <a href="adduse.php?addwykl=1"> <img src="../images/add_icon.png" alt=""> </a>
 
          </div>
         
@@ -33,13 +33,13 @@
          <div class="Menu-SupUser clearfix">
             <ul>
               <li>  
-                  <a href="admin.php">  Topics List  </a></li>
+                  <a href="admin.php">  Tematy  </a></li>
               <li>  
-                  <a href="Editstudents.php">  Students   </a></li>
+                  <a href="obrony.php">  Obrony   </a></li>
               <li>  
-                  <a href="allteachers.php">  Teachers   </a></li>
+                  <a href="Zarzadzaj.php?wwykl=1">  Zarzadząj   </a></li>
               <li>  
-                  <div class="edit"> <a> EDIT </a>  </div></li>
+                  <div class="edit"> <a> Usuwaj </a>  </div></li>
             </ul>
          </div>
          <!-- MENU FOR SUPER USER END -->

@@ -25,10 +25,10 @@ $rowcheck = $resultt->fetch_assoc();
 $checking=$rowcheck['Id_Pracy'];
 
 if($checking == NULL)
-  $query = "SELECT *, Plik_Pracy as Plik FROM praca_dyplomowa  join wykladowca on wykladowca.Id_Wykladowcy=praca_dyplomowa.Id_Promotora where praca_dyplomowa.status='Zatwierdzona'";
+  $query = "SELECT *, Plik_Pracy as Plik,p.Imie as imiep,p.Nazwisko as nazwiskop, r.Imie as imier, r.Nazwisko as nazwiskor FROM praca_dyplomowa  join wykladowca p on p.Id_Wykladowcy=praca_dyplomowa.Id_Promotora join wykladowca r on r.Id_Wykladowcy=praca_dyplomowa.Id_Recenzenta where praca_dyplomowa.status='Zatwierdzona'";
 
 else
-  $query = "SELECT pd.Plik_Pracy as Plik, pd.status as Status, pd.Temat as Temat, pd.Id_Pracy,w.Nazwisko as Nazwisko,w.Imie as Imie, pd.Opis as Opis, s.Nr_Albumu, pd.Id_Promotora  FROM `praca_dyplomowa` pd join student s on s.Id_Pracy = pd.Id_Pracy join wykladowca w on w.Id_Wykladowcy=pd.Id_Promotora where s.Nr_Albumu = '$ID'";
+  $query = "SELECT pd.Plik_Pracy as Plik, pd.status as Status, pd.Temat as Temat, pd.Id_Pracy, pd.Opis as Opis, s.Nr_Albumu, pd.Id_Promotora,p.Imie as imiep,p.Nazwisko as nazwiskop, r.Imie as imier, r.Nazwisko as nazwiskor,p.Id_Wykladowcy,r.Id_Wykladowcy  FROM `praca_dyplomowa` pd join student s on s.Id_Pracy = pd.Id_Pracy join wykladowca p on p.Id_Wykladowcy=pd.Id_Promotora join wykladowca r on r.Id_Wykladowcy=pd.Id_Recenzenta where s.Nr_Albumu = 22";
 }
 
 
@@ -101,7 +101,11 @@ if ($result = $mysqli->query($query)) {
                
              <!-- AUTHOR OF TOPIC -->
              <div class=\"Author\">
-                <p class=\"static\">Autor:</p> 
+                <p class=\"static\">Promotor:</p> 
+                %s %s
+             </div>
+             <div class=\"Author\">
+                <p class=\"static\">Recenzent:</p> 
                 %s %s
              </div>
 
@@ -116,7 +120,7 @@ if ($result = $mysqli->query($query)) {
                 %s
              </div>
              
-             ", $row["Temat"], $row["Imie"], $row['Nazwisko'], $row["Opis"], $row["Status"]);
+             ", $row["Temat"], $row["imiep"], $row['nazwiskop'], $row["imier"], $row['nazwiskor'], $row["Opis"], $row["Status"]);
     
         if($row["Plik"]!=NULL && $checking != NULL){
           printf ("<div class=\"Plik_pracy\">

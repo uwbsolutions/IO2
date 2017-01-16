@@ -59,21 +59,20 @@ if (isset($_GET['recenzjap']) && isset($_GET['id'])){
       echo 'Rekord został dodany';
       $sql = "SELECT * FROM `praca_dyplomowa` p join recenzja r on p.Id_pracy=r.Id_Pracy WHERE p.Id_Pracy='$idd'"; 
       $res = mysqli_query($mysqli, $sql);
-      $num_rows = mysql_num_rows($res);
+      $num_rows = $res->num_rows;
       if($num_rows==2){
-      	$row = $result->fetch_assoc();
- 		$oc1=$row["Ocena"];
- 		$row = $result->fetch_assoc(); 
- 		$oc2=$row["Ocena"];
+      	$row = $res->fetch_assoc();
+ 		    $oc1=$row["Ocena"];
+ 	  	  $row = $res->fetch_assoc(); 
+ 		    $oc2=$row["Ocena"];
+
  		if($oc1>2&&$oc2>2){
  			$sql = "UPDATE praca_dyplomowa SET status='Do_obrony' WHERE Id_Pracy='$idd'"; 
       		$res = mysqli_query($mysqli, $sql);
  		}
       	 
       }
-
-      
-      header("location: wykladowca.php");
+    header("location: wykladowca.php");
     }
       else echo "Modyfikacja nie powiodła się: $sql<br>" .  mysqli_error($mysqli) . "<br><br>";   
     }
@@ -104,7 +103,7 @@ if (isset($_GET['recenzjar']) && isset($_GET['id'])){
 
 
 <?php
-}
+   }
   if (isset($_POST['ocena']) && isset($_POST['rec'])){ 
       
       $ocena = $_POST['ocena'];
@@ -118,24 +117,21 @@ if (isset($_GET['recenzjar']) && isset($_GET['id'])){
       $res = mysqli_query($mysqli, $sql);
       if ($res) {
       echo 'Rekord został dodany';
-      $sql = "SELECT * FROM `praca_dyplomowa` p join recenzja r on p.Id_pracy=r.Id_Pracy WHERE p.Id_Pracy='$idd'"; 
+      $sql = "SELECT * FROM `praca_dyplomowa` p join recenzja r on p.Id_pracy=r.Id_Pracy WHERE p.Id_Pracy='$idd'";
       $res = mysqli_query($mysqli, $sql);
-      $num_rows = mysql_num_rows($res);
+      $num_rows = $res->num_rows;
       if($num_rows==2){
-      	$row = $result->fetch_assoc();
- 		$oc1=$row["Ocena"];
- 		$row = $result->fetch_assoc(); 
- 		$oc2=$row["Ocena"];
- 		if($oc1>2&&$oc2>2){
- 			$sql = "UPDATE praca_dyplomowa SET status='Do_obrony' WHERE Id_Pracy='$idd'"; 
+        $row = $res->fetch_assoc();
+        $oc1=$row["Ocena"];
+        $row = $res->fetch_assoc(); 
+        $oc2=$row["Ocena"];
+ 		    if($oc1>2&&$oc2>2){
+ 		   	  $sql = "UPDATE praca_dyplomowa SET status='Do_obrony' WHERE Id_Pracy='$idd'"; 
       		$res = mysqli_query($mysqli, $sql);
  		}
       	 
       }
-      
-
-
-      header("location: wykladowca.php");
+     header("location: wykladowca.php");
  		}
     
       else echo "Modyfikacja nie powiodła się: $sql<br>" .  mysqli_error($mysqli) . "<br><br>";   

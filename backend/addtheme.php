@@ -1,6 +1,16 @@
 <?php
 require_once("headerwykl.php");
 session_start();
+$idwykl=$_SESSION["IDw"];
+$conn = mysqli_connect("localhost", "root", "", "ioii");
+  if (mysqli_connect_errno()) {
+    echo 'Nie udało się połączyć z bazą danych: ' . mysqli_connect_error();
+    exit();
+  } 
+
+$query = "SELECT * FROM wykladowca WHERE Id_Wykladowcy<>'$idwykl'";
+$result = mysqli_query($conn, $query);
+
 ?>
 
 
@@ -16,16 +26,37 @@ session_start();
         <div class="Read-Block">
 
           <label for="Temat">Temat</label>
-          <textarea form="theme" name="Temat" cols="100" rows="10" wrap="soft"></textarea> 
+          <textarea form="theme" name="Temat" cols="70" rows="5" wrap="soft"></textarea> 
 
         </div>
+         <div class="Read-Block">
+
+          <label for="Opis">Opis</label>
+          <textarea form="theme" name="Opis" cols="70" rows="5" wrap="soft"></textarea> 
+
+        </div>
+
 
         <div class="Read-Block">
 
-          <label for="Opis">Opis</label>
-          <textarea form="theme" name="Opis" cols="100" rows="10" wrap="soft"></textarea> 
+    <label>Recenzent: </label><select id="Recenzent" name="Recenzent"><br>
+            <?php while($row1 = mysqli_fetch_array($result)):;?>
 
-        </div>
+
+
+            <option  value="<?php echo $row1[0]   ; ?> " > 
+
+            <?php echo $row1[5] . " " . $row1[3] . " " . $row1[4]  ; ?>
+
+            </option>
+
+          <?php endwhile;?>
+
+          </select>
+
+          <br>
+
+     </div>
 
         <!-- Button -->
         <div class="Control">
@@ -41,11 +72,6 @@ session_start();
      <!-- REGISTER FORM END -->
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "ioii");
-  if (mysqli_connect_errno()) {
-    echo 'Nie udało się połączyć z bazą danych: ' . mysqli_connect_error();
-    exit();
-  } 
 
 
 
@@ -62,9 +88,9 @@ if (isset($_POST['Temat'])) {
     $Temat = $_POST['Temat'];
     $Opis = $_POST['Opis'];
     $Status= "Zarejestrowana";
-    $ID = $_SESSION['IDw'];
+    $idrecenz = $_POST['Recenzent'];
 
-    $sql = "INSERT INTO praca_dyplomowa(Temat, Opis, Status, Id_Promotora) VALUES ('$Temat','$Opis','$Status','$ID') ";
+    $sql = "INSERT INTO praca_dyplomowa(Temat, Opis, Status, Id_Promotora,Id_Recenzenta) VALUES ('$Temat','$Opis','$Status','$idwykl','$idrecenz') ";
 
     $res =mysqli_query($conn, $sql);
 

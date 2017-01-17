@@ -7,11 +7,13 @@ require_once("headeradmin.php");
 
 
 ?>
-<a href="Zarzadzaj.php?wwykl=1">Wyswietl Wykładowców</a> 
-<a href="Zarzadzaj.php?wstd=1">Wyswietl Studentów</a> 
 
   <div class="Content-Wrapper">
   
+  <div class="Ad_menu">
+    <a href="Zarzadzaj.php?wwykl=1" >Wyswietl Wykładowców</a>
+    <a href="Zarzadzaj.php?wstd=1" >Wyswietl Studentów</a>
+  </div>
      <!-- TOPIC LIST START -->
      <div class="Topics-List-Block">
        
@@ -242,7 +244,6 @@ else
 
 
 ?>
-<b id="logout"><a href="logout.php">Log Out</a></b>
 
 
   </div>

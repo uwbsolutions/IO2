@@ -12,4 +12,3 @@ else
 
 
 ?>
-<b id="logout"><a href="logout.php">Log Out</a></b>

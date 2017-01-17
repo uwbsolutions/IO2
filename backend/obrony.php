@@ -20,13 +20,12 @@ if ($mysqli->connect_errno) {
     printf("Connect failed: %s\n", $mysqli->connect_error);
     exit();
 }
-$query = "SELECT *,p.Imie as imiep,p.Nazwisko as nazwiskop, r.Imie as imier, r.Nazwisko as nazwiskor FROM praca_dyplomowa  join wykladowca p on p.Id_Wykladowcy=praca_dyplomowa.Id_Promotora join wykladowca r on r.Id_Wykladowcy=praca_dyplomowa.Id_Recenzenta where praca_dyplomowa.status='Do_obrony'";
 
 
 
-if (isset($_GET['przewodniczacy'])&&isset($_GET['id'])){ 
+if (isset($_GET['przewodniczac'])&&isset($_GET['id'])){ 
       $idd = $_GET['id'];
-      $sql = "SELECT * FROM praca_dyplomowa WHERE Id_Pracy='$idd'"; 
+      $sql = "SELECT * FROM obrona WHERE Id_Pracy='$idd'"; 
       $res = mysqli_query($mysqli, $sql);
       if ($res){
         $tab = mysqli_fetch_array($res);
@@ -84,12 +83,94 @@ if (isset($_GET['przewodniczacy'])&&isset($_GET['id'])){
 
 
 if(isset($_GET['przewodniczacy'])&&isset($_GET['id'])){
-	$idprc = $_GET['íd'];
+	$idprc = $_GET['id'];
+  $idprom=$_GET['idprom'];
+  $idrec=$_GET['idrec'];
+  $query = "SELECT * FROM wykladowca where Id_Wykladowcy<>'$idrec' and Id_Wykladowcy<>'$idprom'";
+  $result = mysqli_query($mysqli, $query);
 
+  ?>
+<div class="Content-Wrapper">
+  
+     <!-- REGISTER FORM START -->
+      <form action='' id="obr" method="POST" class='Register-Form'>
+
+        <div class="Form-Container">
+        
+        <div class="Read-Block">
+
+          <label for="Data">Data:</label>
+          <input type="Data" name="data">
+        </div>
+
+
+        <div class="Read-Block">
+
+    <label>Przewodniczacy: </label><select id="Przewodn" name="Przewodn"><br>
+            <?php while($row1 = mysqli_fetch_array($result)):;?>
+
+
+
+            <option  value="<?php echo $row1[0]   ; ?> " > 
+
+            <?php echo $row1[5] . " " . $row1[3] . " " . $row1[4]  ; ?>
+
+            </option>
+
+          <?php endwhile;?>
+
+          </select>
+
+          <br>
+
+     </div>
+
+        <!-- Button -->
+        <div class="Control">
+          <button type = "submit" class="Reg-Btn">Register<i class="icon-chevron-right">
+          </i>
+          </button>
+        </div>
+
+        </div>
+
+      </form>
+      </div>
+     <!-- REGISTER FORM END -->
+
+
+  <?php
+if (isset($_POST['Przewodn'])) {
+
+  
+    $przewodn = $_POST['Przewodn'];
+    $data = $_POST['data'];
+
+  $sql = "UPDATE obrona SET Data='$data', Id_przewodniczacego='$przewodn'  WHERE Id_Pracy='$idprc'"; 
+
+    $res =mysqli_query($mysqli, $sql);
+
+    
+
+    if ($res) {
+
+echo "Dodano";
+ header("location: obrony.php");
+    } 
+
+    else {
+
+      echo "<p class='check'>error</p>" . mysqli_error($mysqli);
+
+    }
+
+    mysqli_close($mysqli);
+
+  }
 
 }
 
-
+$query = "SELECT *,p.Imie as imiep,p.Nazwisko as nazwiskop, r.Imie as imier, r.Nazwisko as nazwiskor FROM praca_dyplomowa  join wykladowca p on p.Id_Wykladowcy=praca_dyplomowa.Id_Promotora join wykladowca r on r.Id_Wykladowcy=praca_dyplomowa.Id_Recenzenta join obrona on praca_dyplomowa.Id_Pracy=Obrona.Id_pracy where praca_dyplomowa.status='Do_obrony' and ISNULL(Obrona.Data) and ISNULL(Obrona.Id_przewodniczacego)";
 if ($result = $mysqli->query($query)) {
 
     /* fetch associative array */
@@ -99,7 +180,7 @@ if ($result = $mysqli->query($query)) {
           <div class=\"Topic-Container\">
            
           <div class=\"Delete-Container\">
-                <a href=\"admin.php?usun=1&amp;id=" . $row["Id_Pracy"] . "\"><img class=\"Cross\" src=\"../images/cross.png\" /></a>
+                <a href=\"admin.php?usun=1&amp;idprac=" . $row["Id_Pracy"] ."&amp;idprom=".$row['Id_Promotora']."&amp;idrec=".$row['Id_Recenzenta']. "\"><img class=\"Cross\" src=\"../images/cross.png\" /></a>
           </div>
 
              <div class=\"Topic\">
@@ -131,7 +212,7 @@ if ($result = $mysqli->query($query)) {
              <!-- ENTER INSIDE TOPIC DESCRIPTION -->
              <div class=\"Enter-Topic\">
                
-               <a href=\"admin.php?przewodniczacy=1&amp;id=" . $row["Id_Pracy"] . "\">  
+               <a href=\"obrony.php?przewodniczacy=1&amp;id=" . $row["Id_Pracy"]  ."&amp;idprom=".$row['Id_Promotora']."&amp;idrec=".$row['Id_Recenzenta'].  "\">  
                    Dodaj przewodniczacego obrony  
                </a>
               

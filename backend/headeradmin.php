@@ -22,9 +22,9 @@
          <div class="Logo">
             LOGO
          </div>
-
+        
          <div class="Add-User">
-           
+            
             <a href="adduse.php?addwykl=1"> <img src="../images/add_icon.png" alt=""> </a>
 
          </div>
@@ -40,6 +40,8 @@
                   <a href="Zarzadzaj.php?wwykl=1">  Zarzadząj   </a></li>
               <li>  
                   <div class="edit"> <a> Usuwaj </a>  </div></li>
+              <li> 
+                  <a href="logout.php" id="logout">Log Out</a></li>
             </ul>
          </div>
          <!-- MENU FOR SUPER USER END -->

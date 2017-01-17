@@ -11,6 +11,10 @@ if(isset($_GET['addwykl'])){
 ?>
  <div class="Content-Wrapper">
   
+  <div class="Ad_menu">
+    <a href="adduse.php?addwykl=1">Dodaj Wykładowcę</a> 
+    <a href="adduse.php?addstd=1">Dodaj Studenta</a> 
+  </div>
      <!-- REGISTER FORM START -->
       <form action='' method="POST" class='Register-Form'>
 
@@ -203,8 +207,7 @@ if (isset($_POST['log_stud'])) {
 
 
 
-<a href="adduse.php?addwykl=1">Dodaj Wykładowcę</a> 
-<a href="adduse.php?addstd=1">Dodaj Studenta</a> 
+
 
 
 

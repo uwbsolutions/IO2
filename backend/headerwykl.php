@@ -33,7 +33,7 @@
          <div class="Menu-SupUser clearfix">
             <ul>
               <li>  
-                  <a href="wykladowca.php">  Home  </a></li>
+                  <a href="wykladowca.php">  Recenzje  </a></li>
                   <?php
 
 
@@ -44,11 +44,12 @@
 
                   ?>
               <li>  
-                  <a href="recenzja.php">  Recenzja   </a></li>
+                  <a href="Obronywykl.php">  Obrony   </a></li>
               <li>  
-                  <a href="allteachers.php">  Teachers   </a></li>
-              <li>  
-                  <div class="edit"> <a> EDIT </a>  </div></li>
+                  <a href="mojetematy.php">  Moje tematy   </a></li>
+              <li>
+                  <a href="logout.php" id="logout">Log Out</a></li>
+
             </ul>
          </div>
          <!-- MENU FOR SUPER USER END -->

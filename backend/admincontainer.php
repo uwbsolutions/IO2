@@ -17,7 +17,7 @@ if ($mysqli->connect_errno) {
     printf("Connect failed: %s\n", $mysqli->connect_error);
     exit();
 }
-$query = "SELECT *,p.Imie as imiep,p.Nazwisko as nazwiskop, r.Imie as imier, r.Nazwisko as nazwiskor FROM praca_dyplomowa  join wykladowca p on p.Id_Wykladowcy=praca_dyplomowa.Id_Promotora join wykladowca r on r.Id_Wykladowcy=praca_dyplomowa.Id_Recenzenta where praca_dyplomowa.status='Zarejestrowana'";
+
 
 if(isset($_GET['podtwierdz'])&&isset($_GET['id'])){
   $idprc=$_GET['id'];
@@ -41,8 +41,7 @@ if(isset($_GET['podtwierdz'])&&isset($_GET['id'])){
       else echo "Usuwanie nie powiodło się: $sql<br>" .  mysqli_error($mysqli) . "<br><br>";   
     }
 
-
-
+$query = "SELECT *,p.Imie as imiep,p.Nazwisko as nazwiskop, r.Imie as imier, r.Nazwisko as nazwiskor FROM praca_dyplomowa  join wykladowca p on p.Id_Wykladowcy=praca_dyplomowa.Id_Promotora join wykladowca r on r.Id_Wykladowcy=praca_dyplomowa.Id_Recenzenta where praca_dyplomowa.status='Zarejestrowana'";
 if ($result = $mysqli->query($query)) {
 
     /* fetch associative array */

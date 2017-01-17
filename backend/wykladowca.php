@@ -11,4 +11,3 @@ else
 	echo "Nie masz dostepu do tej strony ". "<a href='../index.php'>Homepage</a>";
 
 ?>
-<b id="logout"><a href="logout.php">Log Out</a></b>

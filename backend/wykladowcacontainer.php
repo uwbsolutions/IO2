@@ -69,6 +69,8 @@ if (isset($_GET['recenzjap']) && isset($_GET['id'])){
  		if($oc1>2&&$oc2>2){
  			$sql = "UPDATE praca_dyplomowa SET status='Do_obrony' WHERE Id_Pracy='$idd'"; 
       		$res = mysqli_query($mysqli, $sql);
+           $sql = "INSERT INTO obrona (Id_pracy) VALUES ('$idd')"; 
+          $res = mysqli_query($mysqli, $sql);
  		}
       	 
       }
@@ -128,6 +130,9 @@ if (isset($_GET['recenzjar']) && isset($_GET['id'])){
  		    if($oc1>2&&$oc2>2){
  		   	  $sql = "UPDATE praca_dyplomowa SET status='Do_obrony' WHERE Id_Pracy='$idd'"; 
       		$res = mysqli_query($mysqli, $sql);
+          $sql = "INSERT INTO obrona (Id_pracy) VALUES ('$idd')"; 
+          $res = mysqli_query($mysqli, $sql);
+
  		}
       	 
       }
